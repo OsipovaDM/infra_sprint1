@@ -1,0 +1,48 @@
+server {
+
+    listen 80;
+    server_name 172.26.81.65;
+
+    location /api/ {
+        # Эта команда определяет, куда нужно перенаправить запрос.
+        proxy_pass http://127.0.0.1:8000;
+    }
+
+    location /admin/ {
+        proxy_pass http://127.0.0.1:8000;
+    }
+        
+    location / {
+        root   /var/www/taski;
+        index  index.html index.htm;
+        try_files $uri /index.html;
+    }
+
+}
+
+server {
+
+    listen 80;
+    server_name 172.26.81.65;
+
+    location /api/ {
+        # Эта команда определяет, куда нужно перенаправить запрос.
+        proxy_pass http://127.0.0.1:8080;
+    }
+
+    location /admin/ {
+        proxy_pass http://127.0.0.1:8080;
+    }
+
+    location /media/ {
+        # alias /var/www/kittygram/media/;
+        root /var/www/kittygram;
+    }
+
+    location / {
+        root   /var/www/infra_sprint1;
+        index  index.html index.htm;
+        try_files $uri /index.html;
+    }
+
+}
