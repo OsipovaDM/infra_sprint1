@@ -23,7 +23,7 @@ server {
 server {
 
     listen 80;
-    server_name 172.26.81.65;
+    server_name localhost;
 
     location /api/ {
         # Эта команда определяет, куда нужно перенаправить запрос.
